@@ -44,7 +44,7 @@ class MyButton extends StatelessWidget {
         child: Text(
           label,
           style: TextStyle(
-            color: textColor ?? Colors.white,
+            color: textColor ?? Colors.white,fontSize: MySize.getSizeHeight(16)
           ),
           textAlign: TextAlign.center,
         ),

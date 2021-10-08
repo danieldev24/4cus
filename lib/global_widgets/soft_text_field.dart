@@ -7,6 +7,7 @@ class MyInputField extends StatelessWidget {
   final String label;
   final String hint;
   final TextEditingController? controller;
+  final String?Function(String?)? validate;
   final Widget? widget;
 
   const MyInputField(
@@ -14,7 +15,7 @@ class MyInputField extends StatelessWidget {
         required this.label,
         required this.hint,
         this.controller,
-        this.widget})
+        this.widget, this.validate})
       : super(key: key);
 
   @override
@@ -56,7 +57,8 @@ class MyInputField extends StatelessWidget {
                       cursorColor:
                       Get.isDarkMode ? Colors.grey[100] : Colors.grey[700],
                       controller: controller,
-                      style: kSub2HeadTextStyle,
+                      style: kTitle,
+                      validator: validate,
                       decoration: InputDecoration(
                         hintText: hint,
                         hintStyle: kSubHeadTextStyle,
