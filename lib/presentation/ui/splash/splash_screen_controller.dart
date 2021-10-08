@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:focus/base/app_constant.dart';
-import 'package:focus/presentation/ui/home/home_view.dart';
-import 'package:focus/presentation/ui/onboard/onboard_view.dart';
 import 'package:focus/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -54,7 +52,7 @@ class SplashScreenController extends GetxController
     _checkFirstTimeLaunch();
     _checkIsRegister();
 
-    /*Timer(
+    Timer(
       Duration(milliseconds: 3300),
         () =>{
             if(_isFirstTimeLaunch){
@@ -65,7 +63,7 @@ class SplashScreenController extends GetxController
               Get.offNamed(Routes.WELCOME)
             }
         }
-    );*/
+    );
   }
 
   @override

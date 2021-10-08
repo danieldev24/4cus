@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 final white1 = Colors.white;
 final white2 = Color(0xffeeeeee);
+final shadow1 = Color(0XFFEFF3F6);
 
 // Define yellow colors here
 final primaryYellow = Color(0xffffc045);

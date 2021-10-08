@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:focus/data/models/onboard_content_model.dart';
-import 'package:focus/global_widgets/button.dart';
+import 'package:focus/global_widgets/soft_button.dart';
 import 'package:focus/presentation/theme/colors_theme.dart';
 import 'package:focus/presentation/theme/size.dart';
 
@@ -33,8 +33,24 @@ class ProgressButton extends StatelessWidget {
                   child: Container(
                     width: 80,
                     height: 80,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 5.0,
+                            offset: Offset(-3, -3),
+                            color: Colors.white.withOpacity(.7)),
+                        BoxShadow(
+                            blurRadius: 5.0,
+                            offset: Offset(3, 3),
+                            color: Colors.black.withOpacity(.15))
+                      ],
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(100),
+                      ),
+                    ),
                     child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation(primaryYellow),
+                      valueColor: AlwaysStoppedAnimation(primaryTeal),
                       value: (initialPage + 1) / (list.length),
                     ),
                   ),
@@ -47,14 +63,24 @@ class ProgressButton extends StatelessWidget {
                       width: 55,
                       height: 55,
                       decoration: BoxDecoration(
-                        color: primaryYellow,
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 5.0,
+                              offset: Offset(-3, -3),
+                              color: Colors.white.withOpacity(.7)),
+                          BoxShadow(
+                              blurRadius: 5.0,
+                              offset: Offset(3, 3),
+                              color: Colors.black.withOpacity(.15))
+                        ],
+                        color: Colors.white,
                         borderRadius: BorderRadius.all(
                           Radius.circular(100),
                         ),
                       ),
                       child: Icon(
                         Icons.arrow_forward_ios,
-                        color: Colors.white,
+                        color: primaryTeal,
                       ),
                     ),
                   ),
@@ -65,7 +91,8 @@ class ProgressButton extends StatelessWidget {
               MyButton(
                 label: "Get Started",
                 onTap: onStart,
-                bgColor: primaryYellow,
+                bgColor: Colors.white,
+                textColor: primaryTeal,
                 height: 60,
                 width: 180,
                 radius: 20,

@@ -6,6 +6,7 @@ class MyButton extends StatelessWidget {
   final String label;
   final Function()? onTap;
   final Color bgColor;
+  final Color? textColor;
   final double? radius;
   final double? width;
   final double? height;
@@ -17,7 +18,7 @@ class MyButton extends StatelessWidget {
       required this.bgColor,
       this.radius,
       this.width,
-      this.height})
+      this.height, this.textColor})
       : super(key: key);
 
   @override
@@ -29,11 +30,21 @@ class MyButton extends StatelessWidget {
         height:height,
         width: width,
         decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                  blurRadius: 5.0,
+                  offset: Offset(-3, -3),
+                  color: Colors.white.withOpacity(.7)),
+              BoxShadow(
+                  blurRadius: 5.0,
+                  offset: Offset(3, 3),
+                  color: Colors.black.withOpacity(.15))
+            ],
             borderRadius: BorderRadius.circular(radius ?? 0), color: bgColor),
         child: Text(
           label,
           style: TextStyle(
-            color: Colors.white,
+            color: textColor ?? Colors.white,
           ),
           textAlign: TextAlign.center,
         ),

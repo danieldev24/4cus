@@ -17,7 +17,7 @@ class OnboardController extends GetxController{
   @override
   void onInit() {
     pageController = PageController(initialPage: 0);
-    userData.writeIfNull(Constant.IS_FIRST_TIME_KEY, false);
+    userData.write(Constant.IS_FIRST_TIME_KEY, false);
     super.onInit();
   }
 

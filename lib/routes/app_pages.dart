@@ -3,6 +3,7 @@ import 'package:focus/presentation/ui/onboard/onboard_binding.dart';
 import 'package:focus/presentation/ui/splash/splash_screen_binding.dart';
 import 'package:focus/presentation/ui/splash/splash_screen_view.dart';
 import 'package:focus/presentation/ui/onboard/onboard_view.dart';
+import 'package:focus/presentation/ui/welcome/welcome_view.dart';
 import 'package:get/get.dart';
 
 part 'app_routes.dart';
@@ -20,5 +21,7 @@ class AppPages {
         name: _Paths.ONBOARD,
         page: () => OnBoardView(),
         binding: OnboardBinding()),
+
+    GetPage(name: _Paths.WELCOME, page:() => WelcomeView())
   ];
 }

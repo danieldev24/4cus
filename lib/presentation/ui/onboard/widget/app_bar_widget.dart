@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:focus/presentation/theme/colors_theme.dart';
 
 class OnBoardingAppBar extends StatelessWidget {
   final int currentIndex;
@@ -35,7 +36,7 @@ class OnBoardingAppBar extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
-                color: Colors.black,
+                color: primaryTeal,
               ),
             ),
           ) : Container(),
