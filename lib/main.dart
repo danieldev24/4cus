@@ -16,12 +16,14 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return GetMaterialApp(
-      title: '4cus',
-      theme: appThemeData[AppTheme.YellowLight],
-      debugShowCheckedModeBanner: false,
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes
+        title: '4cus',
+        theme: appThemeData[AppTheme.YellowLight],
+        debugShowCheckedModeBanner: false,
+        initialRoute: AppPages.INITIAL,
+        getPages: AppPages.routes
     );
   }
 }

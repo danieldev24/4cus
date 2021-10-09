@@ -4,4 +4,5 @@ class Constant {
   static const THEME = 'theme';
   static const DRINK_WATER = 'drinkWater';
   static const USER_NAME = 'username';
+  static const TASK = 'tasks';
 }

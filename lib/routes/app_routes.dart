@@ -6,6 +6,7 @@ abstract class Routes {
   static const SETTINGS = _Paths.SETTINGS;
   static const WELCOME = _Paths.WELCOME;
   static const ONBOARD = _Paths.ONBOARD;
+  static const TASK_DETAILS = _Paths.TASK_DETAILS;
 }
 
 abstract class _Paths {
@@ -14,4 +15,5 @@ abstract class _Paths {
   static const SETTINGS = '/settings';
   static const WELCOME = '/welcome';
   static const ONBOARD = '/onboard';
+  static const TASK_DETAILS = "/task-details";
 }
