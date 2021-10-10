@@ -6,7 +6,7 @@ import 'package:focus/presentation/theme/typo.dart';
 
 class TasksItems extends StatelessWidget {
   final List<TaskType> taskType;
-  final Function()? onClickItem;
+  final Function(TaskType _task)? onClickItem;
   final Function()? onAdd;
 
   const TasksItems({Key? key, required this.taskType, this.onClickItem, this.onAdd}) : super(key: key);
@@ -25,7 +25,7 @@ class TasksItems extends StatelessWidget {
 
   _buildAddTask() {
     return GestureDetector(
-      onTap: onAdd,
+      onTap:() => onAdd,
       child: DottedBorder(
         borderType: BorderType.RRect,
           radius: Radius.circular(20),
@@ -40,7 +40,7 @@ class TasksItems extends StatelessWidget {
 
   _buildTask(BuildContext context, TaskType taskType) {
     return GestureDetector(
-      onTap: onClickItem,
+      onTap:() => onClickItem!(taskType),
       child: Container(
         padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
