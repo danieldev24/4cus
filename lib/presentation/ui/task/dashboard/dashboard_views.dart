@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:focus/data/models/task_type_model.dart';
+import 'package:focus/global_widgets/add_task_type_bottom_sheet.dart';
 import 'package:focus/presentation/theme/assets_path.dart';
 import 'package:focus/presentation/theme/typo.dart';
 import 'package:focus/presentation/ui/task/dashboard/dashboard_controller.dart';
@@ -33,12 +34,20 @@ class DashBoardView extends GetView<DashBoardController> {
                         fontWeight: FontWeight.bold, fontSize: 22),
                   )),
               Expanded(
-                  child: TasksItems(
-                taskType: TaskType.fakeData(),
-                onClickItem: (taskType){
-                  Get.to(TaskDetailView(taskType: taskType));
-                }
-              ),)
+                child: TasksItems(
+                  taskType: TaskType.fakeData(),
+                  onClickItem: (taskType) {
+                    Get.to(TaskDetailView(taskType: taskType));
+                  },
+                  onAdd: () {
+                    showModalBottomSheet(context: context, builder: (context){
+                      return TaskTypeBottomSheetContent(
+                          onSubmit : (){},
+                          buttonText : "Create Task Type");
+                    });
+                  },
+                ),
+              )
             ],
           ),
         );

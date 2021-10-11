@@ -12,12 +12,40 @@ enum AppTheme {
   GreenDark,
 }
 
+final softConfig = [
+  BoxShadow(
+      color: Color.fromRGBO(0, 0, 0, 0.1),
+      offset: Offset(3, 3),
+      blurRadius: 4.0,
+      spreadRadius: 1.0
+  ),
+  BoxShadow(
+      color: Color.fromRGBO(255, 255, 255, 0.9),
+      offset: Offset(-3, -3),
+      blurRadius: 4.0,
+      spreadRadius: 1.0
+  )
+];
+
+final softEmbedConfig = [
+  BoxShadow(
+    color: Colors.white.withOpacity(.7),
+    offset: Offset(3, 3),
+    blurRadius: 5,
+  ),
+  BoxShadow(
+    color: Colors.black.withOpacity(.15),
+    offset: Offset(-3, -3),
+    blurRadius: 5,
+  ),
+];
+
 final appThemeData = {
   AppTheme.YellowLight: ThemeData(
     brightness: Brightness.light,
     primaryColor: primaryYellow,
     scaffoldBackgroundColor: white1,
-    primaryColorLight: white2,
+    primaryColorLight: Colors.grey[100],
     primaryColorDark: secondaryGrey,
     colorScheme: ColorScheme.light(
       primary: primaryYellow,

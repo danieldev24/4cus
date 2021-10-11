@@ -9,8 +9,11 @@ class DateTimePicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10,horizontal: 4),
+      margin: const EdgeInsets.symmetric(horizontal: 4),
       padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: Colors.grey[100]
+      ),
       child: DatePicker(
         DateTime.now(),
         height: 75,

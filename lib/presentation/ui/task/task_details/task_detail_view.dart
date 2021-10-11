@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:focus/data/models/task_type_model.dart';
 import 'package:focus/presentation/theme/size.dart';
 import 'package:focus/presentation/ui/task/task_details/widget/date_picker.dart';
+import 'package:focus/presentation/ui/task/task_details/widget/task_detail_persistant_delegate.dart';
 import 'package:focus/presentation/ui/task/task_details/widget/task_timeline.dart';
 import 'package:focus/presentation/ui/task/task_details/widget/task_title.dart';
 import 'package:get/get.dart';
-import 'dart:math' as math;
 
 class TaskDetailView extends StatelessWidget {
   final TaskType? taskType;
@@ -17,10 +17,15 @@ class TaskDetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     final detailList = taskType!.desc;
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.grey[100],
       body: CustomScrollView(
         slivers: [
-          _buildAppBar(context, taskType!),
+          SliverPersistentHeader(delegate: DelegatePersistent(
+              expandedHeight: 150,
+              taskType: taskType!,
+              rounded: 20,
+          )),
+          //_buildAppBar(context, taskType!),
           SliverToBoxAdapter(
             child: Container(
               decoration: BoxDecoration(

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:focus/presentation/theme/app_themes.dart';
 import 'package:focus/presentation/theme/size.dart';
 import 'package:focus/presentation/ui/home/home_controller.dart';
 
@@ -32,16 +33,7 @@ class SoftBottomNavigation extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50),
             color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                  blurRadius: 5.0,
-                  offset: Offset(-3, -3),
-                  color: Colors.white.withOpacity(.7)),
-              BoxShadow(
-                  blurRadius: 5.0,
-                  offset: Offset(3, 3),
-                  color: Colors.black.withOpacity(.15))
-            ],
+            boxShadow: softConfig,
         ),
         child: ListView.builder(
           itemCount: 4,
@@ -71,18 +63,7 @@ class SoftBottomNavigation extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.grey[100],
                         borderRadius: BorderRadius.circular(50),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.white.withOpacity(.7),
-                            offset: Offset(3, 3),
-                            blurRadius: 5,
-                          ),
-                          BoxShadow(
-                            color: Colors.black.withOpacity(.15),
-                            offset: Offset(-3, -3),
-                            blurRadius: 5,
-                          ),
-                        ],
+                        boxShadow: softEmbedConfig,
                       ),
                     ),
                   ),

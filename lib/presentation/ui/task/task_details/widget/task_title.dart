@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:focus/presentation/theme/app_themes.dart';
 
 class TaskTitle extends StatelessWidget {
   const TaskTitle({Key? key}) : super(key: key);
@@ -7,6 +8,7 @@ class TaskTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.grey[100],
       padding: EdgeInsets.all(15),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -18,6 +20,7 @@ class TaskTitle extends StatelessWidget {
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: Colors.grey[300],
+              boxShadow: softEmbedConfig,
               borderRadius: BorderRadius.circular(20)
             ),
             child: Row(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:focus/base/app_constant.dart';
 import 'package:focus/data/models/task_model.dart';
+import 'package:focus/presentation/theme/app_themes.dart';
 import 'package:focus/presentation/theme/size.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
@@ -14,7 +15,7 @@ class TaskTimeLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Colors.grey[100],
       padding: EdgeInsets.symmetric(horizontal: 15),
       child: Row(
         children: [
@@ -49,6 +50,7 @@ class TaskTimeLine extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle,
+                  boxShadow: softConfig,
                   border: Border.all(width: 5, color: color)),
             )),
         afterLineStyle: LineStyle(thickness: 2, color: color),
@@ -63,6 +65,7 @@ class TaskTimeLine extends StatelessWidget {
       margin: EdgeInsets.all(5),
       decoration: BoxDecoration(
           color: color,
+          boxShadow: softConfig,
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(10),
               bottomLeft: Radius.circular(10),

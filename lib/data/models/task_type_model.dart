@@ -61,9 +61,14 @@ class TaskType {
           desc: [
             Task(
                 taskTitle: "Go for a walk with dog",
+                startTime: "14:00 PM",
+                endTime: "15:00 PM",
+                bgTask: primaryTeal.withOpacity(0.2)),
+            Task(
+                taskTitle: "Go for a walk with dog",
                 startTime: "9:00 AM",
                 endTime: "10:00 AM",
-            bgTask: primaryYellow.withOpacity(0.2)),
+                bgTask: primaryYellow.withOpacity(0.2)),
             Task(
                 taskTitle: "Go for a walk with dog",
                 startTime: "11:00 AM",
@@ -76,15 +81,6 @@ class TaskType {
                 bgTask: primaryTeal.withOpacity(0.2))
 
           ]),
-      TaskType(
-        icon: Icons.person_rounded,
-        title: "Work",
-        bgColor: primaryRed.withOpacity(0.1),
-        btnColor: primaryRed.withOpacity(0.2),
-        iconColor: primaryRed.withOpacity(0.5),
-        left: 3,
-        done: 1,
-      ),
       TaskType(
         icon: Icons.person_rounded,
         title: "Work",

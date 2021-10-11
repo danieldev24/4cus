@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:focus/presentation/theme/app_themes.dart';
 import 'package:focus/presentation/theme/size.dart';
 
 class MyButton extends StatelessWidget {
@@ -30,16 +31,7 @@ class MyButton extends StatelessWidget {
         height:height,
         width: width,
         decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                  blurRadius: 5.0,
-                  offset: Offset(-3, -3),
-                  color: Colors.white.withOpacity(.7)),
-              BoxShadow(
-                  blurRadius: 5.0,
-                  offset: Offset(3, 3),
-                  color: Colors.black.withOpacity(.15))
-            ],
+            boxShadow: softConfig,
             borderRadius: BorderRadius.circular(radius ?? 0), color: bgColor),
         child: Text(
           label,

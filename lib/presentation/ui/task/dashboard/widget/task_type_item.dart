@@ -2,6 +2,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:focus/data/models/task_type_model.dart';
+import 'package:focus/presentation/theme/app_themes.dart';
 import 'package:focus/presentation/theme/typo.dart';
 
 class TasksItems extends StatelessWidget {
@@ -25,16 +26,23 @@ class TasksItems extends StatelessWidget {
 
   _buildAddTask() {
     return GestureDetector(
-      onTap:() => onAdd,
-      child: DottedBorder(
-        borderType: BorderType.RRect,
-          radius: Radius.circular(20),
-          dashPattern: [10,10],
-          color: Colors.grey,
-          strokeWidth: 2,
-          child: Center(
-            child: Text("+ Add",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-          ),),
+      onTap: onAdd,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.grey[100],
+          boxShadow: softConfig,
+          borderRadius: BorderRadius.circular(20)
+        ),
+        child: DottedBorder(
+          borderType: BorderType.RRect,
+            radius: Radius.circular(20),
+            dashPattern: [10,10],
+            color: Colors.grey,
+            strokeWidth: 2,
+            child: Center(
+              child: Text("+ Add",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+            ),),
+      ),
     );
   }
 
@@ -46,6 +54,7 @@ class TasksItems extends StatelessWidget {
         decoration: BoxDecoration(
           color: taskType.bgColor,
           borderRadius: BorderRadius.circular(20),
+          boxShadow: softConfig
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +77,7 @@ class TasksItems extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildTaskStatus(taskType.btnColor!, taskType.iconColor!,
+                _buildTaskStatus(taskType.btnColor!, taskType.iconColor!.withOpacity(1),
                     '${taskType.done} done'),
                 SizedBox(
                   width: 5,
@@ -91,7 +100,7 @@ class TasksItems extends StatelessWidget {
         style: TextStyle(color: txtColor),
       ),
       decoration: BoxDecoration(
-          color: bgColor, borderRadius: BorderRadius.circular(20)),
+          color: bgColor, borderRadius: BorderRadius.circular(20),boxShadow: softEmbedConfig),
     );
   }
 }
