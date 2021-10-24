@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:focus/presentation/theme/app_themes.dart';
+import 'package:focus/presentation/theme/size.dart';
+import 'package:focus/presentation/ui/home/home_binding.dart';
+import 'package:focus/presentation/ui/task/dashboard/dashboard_binding.dart';
 import 'package:focus/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -10,6 +13,8 @@ void main() async {
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await GetStorage.init();
+  MySize().init();
+  DashBoardBinding().dependencies();
   runApp(MyApp());
 }
 
@@ -23,7 +28,7 @@ class MyApp extends StatelessWidget {
         theme: appThemeData[AppTheme.YellowLight],
         debugShowCheckedModeBanner: false,
         initialRoute: AppPages.INITIAL,
-        getPages: AppPages.routes
+        getPages: AppPages.routes,
     );
   }
 }

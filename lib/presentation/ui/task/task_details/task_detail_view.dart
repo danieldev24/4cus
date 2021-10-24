@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:focus/data/models/task_type_model.dart';
+import 'package:focus/data/models/project_model.dart';
 import 'package:focus/presentation/theme/size.dart';
 import 'package:focus/presentation/ui/task/task_details/widget/date_picker.dart';
 import 'package:focus/presentation/ui/task/task_details/widget/task_detail_persistant_delegate.dart';
@@ -9,13 +9,13 @@ import 'package:focus/presentation/ui/task/task_details/widget/task_title.dart';
 import 'package:get/get.dart';
 
 class TaskDetailView extends StatelessWidget {
-  final TaskType? taskType;
+  final Project? taskType;
 
   const TaskDetailView({this.taskType});
 
   @override
   Widget build(BuildContext context) {
-    final detailList = taskType!.desc;
+    final detailList = taskType!.tasks;
     return Scaffold(
       backgroundColor: Colors.grey[100],
       body: CustomScrollView(
@@ -63,7 +63,7 @@ class TaskDetailView extends StatelessWidget {
     );
   }
 
-  _buildAppBar(BuildContext context, TaskType taskType) {
+  _buildAppBar(BuildContext context, Project taskType) {
     return SliverAppBar(
       expandedHeight: 90,
       backgroundColor: Colors.black,
@@ -92,13 +92,6 @@ class TaskDetailView extends StatelessWidget {
               style:
                   TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
             ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(
-              'You have ${taskType.left} tasks left for today!',
-              style: TextStyle(fontSize: 12, color: Colors.grey),
-            )
           ],
         ),
       ),

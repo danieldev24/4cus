@@ -42,8 +42,10 @@ class MyInputField extends StatelessWidget {
                 children: [
                   Expanded(
                       child: TextFormField(
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         readOnly: widget == null ? false : true,
                         autofocus: false,
+                        textCapitalization: TextCapitalization.sentences,
                         cursorColor:
                         Get.isDarkMode ? Colors.grey[100] : Colors.grey[700],
                         controller: controller,
@@ -52,12 +54,10 @@ class MyInputField extends StatelessWidget {
                         decoration: InputDecoration(
                           hintText: hint,
                           hintStyle: kBodyText,
-                          focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: context.theme.backgroundColor, width: 0)),
-                          enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: context.theme.backgroundColor, width: 0)),
+                          errorStyle: TextStyle(color: Colors.red),
+                          errorBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          focusedBorder: InputBorder.none,
                         ),
                       )),
                   widget == null ? Container() : Container(child: widget)

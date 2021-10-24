@@ -22,8 +22,6 @@ class ProgressButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MySize.size80,
-      height: MySize.size80,
       margin: EdgeInsets.symmetric(vertical: 12),
       child: initialPage + 1 != list.length
           ? Stack(

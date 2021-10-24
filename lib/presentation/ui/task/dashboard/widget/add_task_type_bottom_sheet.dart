@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class TaskTypeBottomSheetContent extends GetView<DashBoardController> {
-  final Function onSubmit;
+  final Function()? onSubmit;
   final String buttonText;
 
   const TaskTypeBottomSheetContent(
@@ -20,8 +20,8 @@ class TaskTypeBottomSheetContent extends GetView<DashBoardController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-      height: Get.height * 0.6,
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      height: Get.height * 0.42,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
@@ -34,7 +34,7 @@ class TaskTypeBottomSheetContent extends GetView<DashBoardController> {
           init: DashBoardController(),
           builder: (_) {
             return Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -53,7 +53,7 @@ class TaskTypeBottomSheetContent extends GetView<DashBoardController> {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: softConfig),
+                          boxShadow: softEmbedConfig),
                       child: DropdownButton(
                         iconSize: 0,
                         elevation: 2,
@@ -96,22 +96,17 @@ class TaskTypeBottomSheetContent extends GetView<DashBoardController> {
                   controller: controller.titleController,
                 ),
                 SizedBox(height: Get.height * 0.01),
-                MyInputField(
-                    label: "Date",
-                    hint: DateFormat.yMd().format(controller.selectedDate),
-                    widget: IconButton(
-                      icon: Icon(Icons.calendar_today_outlined,
-                          color: Colors.grey),
-                      onPressed: () => {_getDateFromUser(context)},
-                    )),
+                _colorPalette(),
                 SizedBox(height: Get.height * 0.03),
-                MyButton(
-                  width: MySize.screenWidth * 0.4,
-                  height: MySize.screenHeight * 0.066,
-                  label: buttonText,
-                  radius: 20,
-                  bgColor: Theme.of(context).primaryColor.withOpacity(0.9),
-                  onTap: () => onSubmit,
+                Center(
+                  child: MyButton(
+                    width: MySize.screenWidth * 0.4,
+                    height: MySize.screenHeight * 0.066,
+                    label: buttonText,
+                    radius: 20,
+                    bgColor: Theme.of(context).primaryColor.withOpacity(0.9),
+                    onTap: onSubmit,
+                  ),
                 ),
               ],
             );
@@ -119,14 +114,44 @@ class TaskTypeBottomSheetContent extends GetView<DashBoardController> {
     );
   }
 
-  _getDateFromUser(context) async {
-    DateTime? _pickerDate = await showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2015),
-        lastDate: DateTime(2121));
-    if (_pickerDate != null) {
-      controller.changeDate(_pickerDate);
-    }
+  _colorPalette() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text("Color", style: kTitle),
+        SizedBox(
+          height: 8.0,
+        ),
+        Wrap(
+          children: List<Widget>.generate(controller.colors.length, (index) {
+            return GestureDetector(
+              onTap: () {
+                controller.changeColor(index);
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    boxShadow: softEmbedConfig
+                  ),
+                  child: CircleAvatar(
+                    radius: 14,
+                    backgroundColor: controller.colors[index],
+                    child: controller.selectionColor == index
+                        ? Icon(
+                      Icons.check,
+                      color: Colors.white,
+                      size: 16,
+                    )
+                        : Container(),
+                  ),
+                ),
+              ),
+            );
+          }),
+        )
+      ],
+    );
   }
 }

@@ -30,7 +30,10 @@ class AppPages {
         name: _Paths.WELCOME,
         page: () => WelcomeView(),
         binding: WelcomeBinding()),
-    GetPage(name: _Paths.HOME, page: () => HomeView(), binding: HomeBinding()),
+    GetPage(
+        name: _Paths.HOME,
+        page: () => HomeView(),
+        binding: HomeBinding()),
     GetPage(
       name: _Paths.DASHBOARD,
       page: () => DashBoardView(),

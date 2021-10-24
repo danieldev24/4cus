@@ -1,13 +1,14 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:focus/data/models/task_type_model.dart';
+import 'package:focus/data/models/project_model.dart';
+
 import 'package:focus/presentation/theme/app_themes.dart';
 import 'package:focus/presentation/theme/typo.dart';
 
 class TasksItems extends StatelessWidget {
-  final List<TaskType> taskType;
-  final Function(TaskType _task)? onClickItem;
+  final List<Project> taskType;
+  final Function(Project _task)? onClickItem;
   final Function()? onAdd;
 
   const TasksItems({Key? key, required this.taskType, this.onClickItem, this.onAdd}) : super(key: key);
@@ -19,73 +20,27 @@ class TasksItems extends StatelessWidget {
         itemCount: taskType.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10),
-        itemBuilder: (context, index) => taskType[index].isLast!
-            ? _buildAddTask()
-            : _buildTask(context, taskType[index]));
+        itemBuilder: (context, index) => _buildTask(context, taskType[index]));
   }
 
-  _buildAddTask() {
-    return GestureDetector(
-      onTap: onAdd,
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.grey[100],
-          boxShadow: softConfig,
-          borderRadius: BorderRadius.circular(20)
-        ),
-        child: DottedBorder(
-          borderType: BorderType.RRect,
-            radius: Radius.circular(20),
-            dashPattern: [10,10],
-            color: Colors.grey,
-            strokeWidth: 2,
-            child: Center(
-              child: Text("+ Add",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-            ),),
-      ),
-    );
-  }
-
-  _buildTask(BuildContext context, TaskType taskType) {
+  _buildTask(BuildContext context, Project taskType) {
     return GestureDetector(
       onTap:() => onClickItem!(taskType),
       child: Container(
         padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
-          color: taskType.bgColor,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(20),
-          boxShadow: softConfig
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(
-              taskType.icon,
-              color: taskType.iconColor,
-              size: 35,
+            Center(
+              child: Text(
+                taskType.title!,
+                style: kTitle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
             ),
-            SizedBox(
-              height: 30,
-            ),
-            Text(
-              taskType.title!,
-              style: kTitle.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildTaskStatus(taskType.btnColor!, taskType.iconColor!.withOpacity(1),
-                    '${taskType.done} done'),
-                SizedBox(
-                  width: 5,
-                ),
-                _buildTaskStatus(
-                    Colors.white, taskType.iconColor!, '${taskType.left} left')
-              ],
-            )
           ],
         ),
       ),

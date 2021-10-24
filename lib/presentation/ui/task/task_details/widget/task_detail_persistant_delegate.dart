@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:focus/data/models/task_type_model.dart';
+import 'package:focus/data/models/project_model.dart';
 import 'package:focus/presentation/theme/size.dart';
 import 'package:focus/presentation/ui/task/task_details/widget/task_title.dart';
 import 'package:get/get.dart';
@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'date_picker.dart';
 
 class DelegatePersistent extends SliverPersistentHeaderDelegate {
-  final TaskType taskType;
+  final Project taskType;
   final double expandedHeight;
   final double rounded;
 
@@ -50,13 +50,6 @@ class DelegatePersistent extends SliverPersistentHeaderDelegate {
                       color: Colors.white,
                       fontSize: 22),
                 ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  'You have ${taskType.left} tasks left for today!',
-                  style: TextStyle(fontSize: 12, color: Colors.grey),
-                )
               ],
             ),
           ),
